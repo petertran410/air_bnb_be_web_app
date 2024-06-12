@@ -1,27 +1,20 @@
 
-# CAPSTONE BACKEND AIRBNB (Using NestJS, Prisma)
-
-Click here --> <a href="https://github.com/ducdatit2002/Capstone-AirBnB-BE" target="_blank">GitHub</a>
-</br>
-Click here --> <a href="https://www.youtube.com/watch?v=b4cf8WIkAWs" target="_blank">Video Demo</a>
-</br>
+# BACKEND AIRBNB (Using NestJS, Prisma)
 
 ### Our team member
 | Index | Name                |      Github account             |
 |:------|:-----------------------|:---------------------------|
-| 1     | Phạm Đức Đạt |ducdatit2002 |
-| 2     | Trần Ngọc Nhân | petertran410 |         
+| 1     | Trần Ngọc Nhân | petertran410 |         
 
 ### Tasks and Contribution 
 | Index | Role                                                         | Person  | Contribution |
 |:------|:-------------------------------------------------------------|:--------------:|:------------:|
-| 1     | Member     |   Đức Đạt   |          100%      |
-| 2     | Member      |  Ngọc Nhân   |          100%      |
+| 1     | Member      |  Ngọc Nhân   |          100%      |
 
 | Name | Tasks |
 |:------|:-------------------------------------------------------------|
-| Đức Đạt     | Users API, locations API, comments API   |   
-| Ngọc Nhân   | Auths API, rooms API, reservations API  | 
+| 1     | Users API, locations API, comments API   |   
+| 2     | Auths API, rooms API, reservations API  | 
 
 ## Links
 
@@ -38,7 +31,7 @@ In the project directory, you can run:
 ### `yarn start:dev`
 
 
-# Phạm Đức Đạt
+# 
 
 1. USERS
 -   GET danh sách users
@@ -70,7 +63,7 @@ In the project directory, you can run:
 -   DELETE comments
      -  http://localhost:8080/api/comments/delete/1
 
-# Trần Ngọc Nhân
+# 
 
 0. AUTH
 -   POST đăng ký tài khoản
