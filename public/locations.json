@@ -1,0 +1,69 @@
+{
+  "statusCode": 200,
+  "content": [
+    {
+      "id": 1,
+      "address": "Quận 1",
+      "city": "Hồ Chí Minh",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt1.jpg"
+    },
+    {
+      "id": 2,
+      "address": "Cái Răng",
+      "city": "Cần Thơ",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt2.jpg"
+    },
+    {
+      "id": 3,
+      "address": "Hòn Rùa",
+      "city": "Nha Trang",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt3.jpg"
+    },
+    {
+      "id": 4,
+      "address": "Hoàn Kiếm",
+      "city": "Hà Nội",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt4.jpg"
+    },
+    {
+      "id": 5,
+      "address": "Hòn Tằm",
+      "city": "Phú Quốc",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt5.jpg"
+    },
+    {
+      "id": 6,
+      "address": "Hải Châu",
+      "city": "Đà Nẵng",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt6.jpg"
+    },
+    {
+      "id": 7,
+      "address": "Langbiang",
+      "city": "Đà Lạt",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt7.jpg"
+    },
+    {
+      "id": 8,
+      "address": "Mũi Né",
+      "city": "Phan Thiết",
+      "country": "Việt Nam",
+      "photo": "https://airbnbnew.cybersoft.edu.vn/images/vt8.jpg"
+    },
+    {
+      "id": 3133,
+      "address": "Núi Bà Đen2",
+      "city": "Tây Ninh",
+      "country": "Việt Nam",
+      "photo": "https://sacotravel.com/wp-content/uploads/2023/11/Nui-Ba-Den.jpg"
+    }
+  ],
+  "dateTime": "2024-06-13T08:54:27.7187785+07:00"
+}

@@ -31,7 +31,7 @@ export class AuthController {
     private readonly usersService: UsersService,
   ) {}
 
-  @UseGuards(SignInGuard)
+  // @UseGuards(SignInGuard)
   @Post('sign-in')
   async signIn(@Body() user: SignInDTO, @Request() req: Req) {
     return req.user;
@@ -60,7 +60,7 @@ export class AuthController {
     }
   }
 
-  @UseGuards(LocalAuthGuard)
+  // @UseGuards(LocalAuthGuard)
   @ApiHeader({ name: 'access_token', required: true })
   @ApiBody({ type: ChangePasswordDTO })
   @Put('change-password/:id')

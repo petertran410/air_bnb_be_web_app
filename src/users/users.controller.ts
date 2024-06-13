@@ -30,7 +30,7 @@ import { plainToClass, instanceToPlain } from 'class-transformer';
 import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
 import { CheckExistencePipe } from 'src/pipes/check-existence.pipe';
 
-// @UseGuards(LocalAuthGuard)
+@UseGuards(LocalAuthGuard)
 @ApiTags('Users')
 @ApiHeader({ name: 'access_token', required: true })
 @Controller('users')

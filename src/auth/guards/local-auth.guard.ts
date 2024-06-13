@@ -11,13 +11,14 @@ export class LocalAuthGuard extends AuthGuard('local') {
     return super.canActivate(context);
   }
 
-  handleRequest(err, decodedToken, info) {
+  handleRequest(err: any, decodedToken: any, info: any) {
     if (err || !decodedToken) {
       throw (
         err ||
         new UnauthorizedException('Please sign in or create new account!')
       );
+    } else {
+      return decodedToken;
     }
-    return decodedToken;
   }
 }

@@ -18,11 +18,11 @@ export class UserDTO {
   @Matches(/\D+/g, { message: 'Invalid name!' })
   name: string;
 
-  @ApiProperty({ default: 'tranngocnhan@gmail.com' })
+  @ApiProperty({ default: 'nhantran4102002@gmail.com' })
   @IsEmail(undefined, { message: 'Invalid email!' })
   email: string;
 
-  @ApiProperty({ default: 'NgocNhan123@' })
+  @ApiProperty({ default: 'Nhantran@4102002' })
   password: string;
 
   @ApiProperty({ default: '0902850103' })

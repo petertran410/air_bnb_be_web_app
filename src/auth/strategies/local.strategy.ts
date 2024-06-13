@@ -19,7 +19,7 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
 
   async validate(decodedToken: any) {
     try {
-      const { id } = decodedToken.data;
+      const { id } = decodedToken.data.data;
       const validatedUser = await this.userService.findOne(id);
       if (validatedUser) {
         return decodedToken;

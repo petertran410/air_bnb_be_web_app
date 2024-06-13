@@ -53,4 +53,12 @@ export class LocationsService {
     });
     return location;
   }
+
+  async searchLocations(pageIndex: number, pageSize: number): Promise<LocationDTO[]> {
+    const data: LocationDTO[] = await this.prisma.locations.findMany({
+      skip: pageSize * (pageIndex - 1),
+      take: pageSize,
+    });
+    return data;
+  }
 }

@@ -27,7 +27,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { LocationUpdateDTO, LocationDTO } from './dto';
 import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
 
-@UseGuards(LocalAuthGuard)
+// @UseGuards(LocalAuthGuard)
 @ApiTags('Locations')
 @ApiHeader({ name: 'access_token', required: true })
 @Controller('locations')
@@ -59,6 +59,28 @@ export class LocationsController {
       }
 
       if (data?.length > 0 || data) {
+        return { message: 'Successfully!', data };
+      } else {
+        throw new NotFoundException();
+      }
+    } catch (err) {
+      throw err || new InternalServerErrorException();
+    }
+  }
+
+  @ApiQuery({name: "pageIndex", required: false})
+  @ApiQuery({name: "pageSize", required: false})
+  @Get('location-search')
+  async locationSearch(
+    @Query('pageIndex') pageIndex: number = 1,
+    @Query('pageSize') pageSize: number = 8
+  ) {
+    try {
+      const data = await this.locationsService.searchLocations(
+        +pageIndex,
+        +pageSize,
+      );
+      if (data?.length > 0) {
         return { message: 'Successfully!', data };
       } else {
         throw new NotFoundException();
