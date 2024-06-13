@@ -29,6 +29,7 @@ export class SignInStrategy extends PassportStrategy(Strategy, 'sign-in') {
           { data: user },
           { secret: this.configService.get('SECRET_KEY') },
         );
+        console.log(data);
         return { message: 'Successfully signed in!', access_token: data };
       }
     } catch (err) {

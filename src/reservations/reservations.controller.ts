@@ -65,6 +65,20 @@ export class ReservationsController {
     }
   }
 
+  @Get('reservation-by-id/:id')
+  async getReservationById(@Param('id') id: string) {
+    try {
+      const reservation = await this.reservationsService.findOne(+id);
+      if (!reservation) {
+        throw new NotFoundException('Reservation not found');
+      }
+      const data = instanceToPlain(plainToClass(Reservation, reservation));
+      return { message: 'Successfully!', data };
+    } catch {
+      throw new InternalServerErrorException();
+    }
+  }
+
   @Post('new')
   async create(@Body() data: ReservationDTO) {
     try {

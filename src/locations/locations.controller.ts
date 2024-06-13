@@ -35,7 +35,7 @@ import { Location } from './entities';
 @Controller('locations')
 export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {}
-
+  
   @ApiQuery({ name: 'id', required: false })
   @ApiQuery({ name: 'search', required: false })
   @ApiQuery({ name: 'records', required: false })
