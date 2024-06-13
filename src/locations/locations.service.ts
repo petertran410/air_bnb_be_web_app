@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { LocationUpdateDTO, LocationDTO } from './dto';
 
@@ -31,6 +31,7 @@ export class LocationsService {
     const location: LocationDTO = await this.prisma.locations.findUnique({
       where: { id },
     });
+
     return location;
   }
 
@@ -54,7 +55,10 @@ export class LocationsService {
     return location;
   }
 
-  async searchLocations(pageIndex: number, pageSize: number): Promise<LocationDTO[]> {
+  async searchLocations(
+    pageIndex: number,
+    pageSize: number,
+  ): Promise<LocationDTO[]> {
     const data: LocationDTO[] = await this.prisma.locations.findMany({
       skip: pageSize * (pageIndex - 1),
       take: pageSize,

@@ -18,7 +18,7 @@ import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
 import { instanceToPlain, plainToClass } from 'class-transformer';
 import { Comment } from './entities';
 
-@UseGuards(LocalAuthGuard)
+// @UseGuards(LocalAuthGuard)
 @ApiTags('Comments')
 @ApiHeader({ name: 'access_token', required: true })
 @Controller('comments')

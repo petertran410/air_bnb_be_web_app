@@ -28,7 +28,7 @@ import { instanceToPlain, plainToClass } from 'class-transformer';
 import { Room } from './entities';
 import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
 
-@UseGuards(LocalAuthGuard)
+// @UseGuards(LocalAuthGuard)
 @ApiTags('Rooms')
 @ApiHeader({ name: 'access_token', required: true })
 @Controller('rooms')
@@ -63,6 +63,43 @@ export class RoomsController {
       }
 
       if (data?.length === 0 || !data) {
+        throw new NotFoundException();
+      } else {
+        return {
+          message: 'Successfully!',
+          data: instanceToPlain(plainToClass(Room, data)),
+        };
+      }
+    } catch (err) {
+      throw err || new InternalServerErrorException();
+    }
+  }
+
+  @Get('rooms-by-id/:id')
+  async getRoomId(@Param('id') id: string) {
+    try {
+      const room = await this.roomsService.findOne(+id);
+      if (!room) {
+        throw new NotFoundException('Room not found');
+      }
+      const data = instanceToPlain(plainToClass(Room, room));
+      return { message: 'Successfully!', data };
+    } catch (err) {
+      throw err || new InternalServerErrorException();
+    }
+  }
+
+  @ApiQuery({ name: 'location_id', required: true })
+  @Get('rooms-location')
+  async getByLocationId(@Query('location_id') location_id: string) {
+    try {
+      const data = await this.roomsService.findAll(
+        +location_id,
+        null,
+        null,
+        null,
+      );
+      if (!data || data.length === 0) {
         throw new NotFoundException();
       } else {
         return {

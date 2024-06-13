@@ -15,7 +15,7 @@ export class Comment {
 
   created_by: User;
 
-  date: Date;
+  date: string;
 
   content: string;
 

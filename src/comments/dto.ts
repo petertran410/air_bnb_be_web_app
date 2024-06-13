@@ -37,7 +37,7 @@ export class CommentUpdateDTO extends CommentDTO {
 
   @ApiPropertyOptional()
   content: string;
-
+  
   @ApiPropertyOptional()
   rated: number;
 }

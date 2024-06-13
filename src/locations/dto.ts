@@ -2,7 +2,7 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class LocationDTO {
-  id?: number;
+  id: number;
 
   @ApiProperty()
   @IsString()

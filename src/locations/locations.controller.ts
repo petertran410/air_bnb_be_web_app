@@ -26,6 +26,8 @@ import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { LocationUpdateDTO, LocationDTO } from './dto';
 import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
+import { instanceToPlain, plainToClass } from 'class-transformer';
+import { Location } from './entities';
 
 // @UseGuards(LocalAuthGuard)
 @ApiTags('Locations')
@@ -68,17 +70,34 @@ export class LocationsController {
     }
   }
 
-  @ApiQuery({name: "pageIndex", required: false})
-  @ApiQuery({name: "pageSize", required: false})
+  @Get('location-by-id/:id')
+  async getLocations(@Param('id') id: string) {
+    try {
+      const location = await this.locationsService.findOne(+id);
+      if (!location) {
+        throw new NotFoundException('Location not found');
+      }
+      const data = instanceToPlain(plainToClass(Location, location));
+      return { message: 'Successfully!', data };
+    } catch (err) {
+      throw err || new InternalServerErrorException();
+    }
+  }
+
+  @ApiQuery({ name: 'pageIndex', required: false })
+  @ApiQuery({ name: 'pageSize', required: false })
   @Get('location-search')
   async locationSearch(
-    @Query('pageIndex') pageIndex: number = 1,
-    @Query('pageSize') pageSize: number = 8
+    @Query('pageIndex') pageIndexParam: string = '1', // Default to '1' if not provided
+    @Query('pageSize') pageSizeParam: string = '8', // Default to '8' if not provided
   ) {
+    const pageIndex = +pageIndexParam; // Convert string to number
+    const pageSize = +pageSizeParam; // Convert string to number
+
     try {
       const data = await this.locationsService.searchLocations(
-        +pageIndex,
-        +pageSize,
+        pageIndex,
+        pageSize,
       );
       if (data?.length > 0) {
         return { message: 'Successfully!', data };

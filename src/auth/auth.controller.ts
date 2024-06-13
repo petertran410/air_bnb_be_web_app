@@ -31,7 +31,7 @@ export class AuthController {
     private readonly usersService: UsersService,
   ) {}
 
-  // @UseGuards(SignInGuard)
+  @UseGuards(SignInGuard)
   @Post('sign-in')
   async signIn(@Body() user: SignInDTO, @Request() req: Req) {
     return req.user;
