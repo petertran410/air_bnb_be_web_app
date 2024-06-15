@@ -25,7 +25,7 @@ export class UserDTO {
   @ApiProperty({ default: 'Nhantran@4102002' })
   password: string;
 
-  @ApiProperty({ default: '0902850103' })
+  @ApiProperty({ default: '0901391300' })
   @IsNumberString(undefined, { message: 'Invalid phone number!' })
   phone: string;
 

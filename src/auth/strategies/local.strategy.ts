@@ -11,20 +11,22 @@ import { UsersService } from '../../users/users.service';
 export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
   constructor(private readonly userService: UsersService) {
     super({
-      jwtFromRequest: ExtractJwt.fromHeader('access_token'),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: true,
-      secretOrKey: process.env.SECRET_KEY,
+      secretOrKey: ('SECRET_KEY'),
     });
   }
 
   async validate(decodedToken: any) {
+    console.log('Decoded token:', decodedToken);
     try {
-      const { id } = decodedToken.data.data;
+      const { id } = decodedToken.user.data;
       const validatedUser = await this.userService.findOne(id);
       if (validatedUser) {
         return decodedToken;
       } else {
-        throw new UnauthorizedException();
+        // throw new UnauthorizedException();
+        console.log("Lỗi ...");
       }
     } catch (err) {
       throw err || new InternalServerErrorException();

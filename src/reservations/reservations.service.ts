@@ -36,10 +36,22 @@ export class ReservationsService {
     return data;
   }
 
-  async findOne(id: number): Promise<ReservationDTO> {
+  async findOneId(id: number): Promise<ReservationDTO> {
     const reservation: ReservationDTO =
       await this.prisma.reservations.findFirst({
-        where: { id },
+        where: {
+          id,
+        },
+      });
+    return reservation;
+  }
+
+  async findOneReservation(reserved_by_id: number): Promise<ReservationDTO> {
+    const reservation: ReservationDTO =
+      await this.prisma.reservations.findFirst({
+        where: {
+          reserved_by_id,
+        },
       });
     return reservation;
   }

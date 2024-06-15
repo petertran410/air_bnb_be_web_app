@@ -28,7 +28,7 @@ import { instanceToPlain, plainToClass } from 'class-transformer';
 import { Room } from './entities';
 import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
 
-// @UseGuards(LocalAuthGuard)
+@UseGuards(LocalAuthGuard)
 @ApiTags('Rooms')
 @ApiHeader({ name: 'access_token', required: true })
 @Controller('rooms')

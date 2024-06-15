@@ -42,7 +42,7 @@ export class ReservationsController {
       let data: any;
 
       if (id) {
-        data = await this.reservationsService.findOne(+id);
+        data = await this.reservationsService.findOneId(+id);
       } else {
         data = await this.reservationsService.findAll(
           +guestID,
@@ -65,10 +65,10 @@ export class ReservationsController {
     }
   }
 
-  @Get('reservation-by-id/:id')
-  async getReservationById(@Param('id') id: string) {
+  @Get('reservation-by-id/:reserved_by_id')
+  async getReservationById(@Param('reserved_by_id') reserved_by_id: string) {
     try {
-      const reservation = await this.reservationsService.findOne(+id);
+      const reservation = await this.reservationsService.findOneReservation(+reserved_by_id);
       if (!reservation) {
         throw new NotFoundException('Reservation not found');
       }

@@ -30,7 +30,7 @@ import { plainToClass, instanceToPlain } from 'class-transformer';
 import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
 import { CheckExistencePipe } from 'src/pipes/check-existence.pipe';
 
-// @UseGuards(LocalAuthGuard)
+@UseGuards(LocalAuthGuard)
 @ApiTags('Users')
 @ApiHeader({ name: 'access_token', required: true })
 @Controller('users')
@@ -87,6 +87,34 @@ export class UsersController {
       return { message: 'Successfully!', data };
     } catch (err) {
       throw err || new InternalServerErrorException();
+    }
+  }
+
+  @Get('user-by-id/:id')
+  async getUserId(@Param('id') id: string) {
+    try {
+      const userId = await this.usersService.findOne(+id);
+      if (!userId) {
+        throw new NotFoundException('User not found');
+      }
+      const data = instanceToPlain(plainToClass(User, userId));
+      return { message: 'Successfully!', data };
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  @Get('search/:name')
+  async getSearchName(@Param('name') name: string) {
+    try {
+      const searchName = await this.usersService.searchName(name);
+      if (!searchName) {
+        throw new NotFoundException('Name not found');
+      }
+      const data = instanceToPlain(plainToClass(User, searchName));
+      return { message: 'Successfully!', data };
+    } catch (err) {
+      throw err;
     }
   }
 

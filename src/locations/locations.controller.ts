@@ -29,9 +29,9 @@ import { CompressImagePipe } from 'src/pipes/compress-image.pipe';
 import { instanceToPlain, plainToClass } from 'class-transformer';
 import { Location } from './entities';
 
-// @UseGuards(LocalAuthGuard)
+@UseGuards(LocalAuthGuard)
 @ApiTags('Locations')
-@ApiHeader({ name: 'access_token', required: true })
+@ApiHeader({ name: 'access_token', required: false })
 @Controller('locations')
 export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {}

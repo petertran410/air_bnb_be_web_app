@@ -48,6 +48,13 @@ export class UsersService {
     return user;
   }
 
+  async searchName(name: string): Promise<UserDTO> {
+    const searchName: UserDTO = await this.prisma.users.findFirst({
+      where: { name },
+    });
+    return searchName;
+  }
+
   async checkExistence({ email, phone }: User): Promise<UserDTO> {
     const user: UserDTO = await this.prisma.users.findFirst({
       where: {
