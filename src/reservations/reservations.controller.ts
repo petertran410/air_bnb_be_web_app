@@ -65,10 +65,26 @@ export class ReservationsController {
     }
   }
 
+  @Get(':id')
+  async getReservation(@Param('id') id: string) {
+    try {
+      const reservation = await this.reservationsService.findOneId(+id);
+      if (!reservation) {
+        throw new NotFoundException('Reservaion not found');
+      }
+      const data = instanceToPlain(plainToClass(Reservation, reservation));
+      return { message: 'Successfully!', data };
+    } catch (err) {
+      throw new err;
+    }
+  }
+
   @Get('reservation-by-id/:reserved_by_id')
   async getReservationById(@Param('reserved_by_id') reserved_by_id: string) {
     try {
-      const reservation = await this.reservationsService.findOneReservation(+reserved_by_id);
+      const reservation = await this.reservationsService.findOneReservation(
+        +reserved_by_id,
+      );
       if (!reservation) {
         throw new NotFoundException('Reservation not found');
       }
