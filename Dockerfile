@@ -1,11 +1,14 @@
 FROM node:18
 
-WORKDIR /usr/src/app
+WORKDIR /usr/share/air_bnb_be_web_app
 
-COPY package*.json ./
-COPY prisma ./prisma/
+COPY package*.json /usr/share/air_bnb_be_web_app
 
 RUN yarn install
+
+COPY prisma ./prisma/
+
+RUN yarn prisma generate
 
 COPY . .
 
