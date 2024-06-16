@@ -25,7 +25,6 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
       if (validatedUser) {
         return decodedToken;
       } else {
-        // throw new UnauthorizedException();
         console.log("Lỗi ...");
       }
     } catch (err) {

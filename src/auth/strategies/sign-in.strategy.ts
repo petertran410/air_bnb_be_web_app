@@ -19,33 +19,6 @@ export class SignInStrategy extends PassportStrategy(Strategy, 'sign-in') {
     super({ usernameField: 'email' });
   }
 
-  // async validate(email: string, password: string): Promise<any> {
-  //   try {
-  //     const user = await this.userService.validate(email, password);
-  //     if (!user) {
-  //       throw new UnauthorizedException();
-  //     } else {
-  //       const payload = { data: user };
-  //       // const data = this.jwtService.sign(
-  //       //   { data: user },
-  //       //   {
-  //       //     secret: this.configService.get(process.env.SECRET_KEY),
-  //       //     expiresIn: '60m',
-  //       //   },
-  //       // );
-  //       // return { message: 'Successfully signed in!', access_token: data };
-  //       const token = this.jwtService.sign(payload, {
-  //         secret: this.configService.get(process.env.SECRET_KEY),
-  //         expiresIn: '60m', // Set token expiration time to 60 minutes
-  //       });
-  //       console.log(token);
-  //       return { message: 'Successfully signed in!', access_token: token };
-  //     }
-  //   } catch (err) {
-  //     throw err || new InternalServerErrorException();
-  //   }
-  // }
-
   async validate(email: string, password: string): Promise<any> {
     try {
       const user = await this.userService.validate(email, password);

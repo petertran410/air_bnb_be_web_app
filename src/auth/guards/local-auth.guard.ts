@@ -38,10 +38,6 @@ export class LocalAuthGuard extends AuthGuard('local') {
 
   handleRequest(err: any, user: any, info: any, context: ExecutionContext) {
     if (!user) {
-      // throw (
-      //   err ||
-      //   new UnauthorizedException('Please sign in or create a new account!')
-      // );
       console.log("Lỗi không tìm thấy user");
     } 
     else {
